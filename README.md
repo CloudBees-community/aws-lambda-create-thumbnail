@@ -1,21 +1,14 @@
 
 ## Description
 
-http://docs.aws.amazon.com/lambda/latest/dg/walkthrough-s3-events-adminuser.html
+This sample is based on [AWS Lambda Walkthrough 2: Handling Amazon S3 Events (Using the AWS CLI)](
+http://docs.aws.amazon.com/lambda/latest/dg/walkthrough-s3-events-adminuser.html).
 
-## Lambda Function
+## How to use this project
 
-```
-{
-    "FunctionName": "CreateThumbnail",
-    "CodeSize": 181494,
-    "MemorySize": 1024,
-    "FunctionArn": "arn:aws:lambda:us-east-1:564007293907:function:CreateThumbnail",
-    "Handler": "CreateThumbnail.handler",
-    "Role": "arn:aws:iam::564007293907:role/AWSLambdaExecute",
-    "Timeout": 10,
-    "LastModified": "2015-06-01T08:49:34.430+0000",
-    "Runtime": "nodejs",
-    "Description": ""
-}
-```
+**Create a `.envrc` file with your AWS CLI credentials if needed**. See `.envrc.sample`.
+
+* `build`: build `target/CreateThumbnail.zip`
+* `create-function`: creates the function on the was account
+* `update-function-code`: update the Lambda function on you AWS account
+

@@ -1,0 +1,11 @@
+
+# SEE http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html
+
+# YOU CAN USE A PRE CONFIGURED AWS CLI PROFILE
+
+export AWS_DEFAULT_PROFILE=adminuser
+
+# OR YOU CAN INJECT DIRECTLY THE CREDENTIALS
+
+export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
+export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
