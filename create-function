@@ -1,0 +1,39 @@
+#!/usr/bin/env sh
+
+set -e
+set -x
+
+# resolve links - $0 may be a softlink
+PRG="$0"
+
+while [ -h "$PRG" ]; do
+  ls=`ls -ld "$PRG"`
+  link=`expr "$ls" : '.*-> \(.*\)$'`
+  if expr "$link" : '/.*' > /dev/null; then
+    PRG="$link"
+  else
+    PRG=`dirname "$PRG"`/"$link"
+  fi
+done
+
+# Get standard environment variables
+PRGDIR=`dirname "$PRG"`
+
+DOT_ENV_RC="$PRGDIR/.envrc"
+
+# SOURCE .ENVRC IF EXISTS
+if [ -f $DOT_ENV_RC ];
+then
+   source $DOT_ENV_RC
+else
+   echo "File $DOT_ENV_RC does not exist."
+fi
+
+aws lambda create-function \
+--function-name CreateThumbnail \
+--zip-file fileb://./target/CreateThumbnail.zip \
+--role arn:aws:iam::564007293907:role/AWSLambdaExecute \
+--handler CreateThumbnail.handler \
+--runtime nodejs \
+--timeout 10 \
+--memory-size 1024
